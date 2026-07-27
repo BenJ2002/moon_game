@@ -24,10 +24,14 @@ public class GameManager : MonoBehaviour
 
     // List of log entries for UI/Narrative display
     public List<string> storyLogs = new List<string>();
+    
+    public ConstructionManager constructionManager;
+    public ResourceManager resourceManager;
 
     void Start()
     {
         InitializeGame();
+        SetupManagers();
     }
 
     void Awake()
@@ -41,6 +45,24 @@ public class GameManager : MonoBehaviour
     {
         // Set initial conditions for the "BaseSetup" phase
         Debug.Log("Game Initialized: BaseSetup Mode Active");
+    }
+    
+    void SetupManagers()
+    {
+        // Get references to managers if they exist in the scene
+        constructionManager = FindObjectOfType<ConstructionManager>();
+        resourceManager = FindObjectOfType<ResourceManager>();
+        
+        // If we don't have managers, create new ones or assign defaults
+        if (constructionManager == null)
+        {
+            constructionManager = gameObject.AddComponent<ConstructionManager>();
+        }
+        
+        if (resourceManager == null)
+        {
+            resourceManager = gameObject.AddComponent<ResourceManager>();
+        }
     }
 
     void Update()
