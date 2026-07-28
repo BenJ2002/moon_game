@@ -13,7 +13,7 @@ This directory contains the core environment-related systems for the Mars colony
 ## How to Add to Unity
 
 1. Open your Unity project
-2. Navigate to the "Assets" folder
+2. Navigate to the "Assets" folder  
 3. Right-click and select "Create > Folder"
 4. Name it "Systems"
 5. Create a subfolder called "Environment"
@@ -27,26 +27,36 @@ This directory contains the core environment-related systems for the Mars colony
 ### Setup Instructions
 
 1. **Terrain System**:
-   - Attach `TerrainSystem` component to a GameObject in your scene
-   - Configure terrain settings in the Inspector
-   - Add resource spawn points to the Resource Spawns list
+   - Create an empty GameObject in your main scene called "TerrainManager"
+   - Attach `TerrainSystem` component to this GameObject
+   - In the Inspector, configure all terrain settings as needed
+   - Set up resource spawn points in the Resource Spawns list
+   - TerrainSystem does not require any additional GameObjects to be placed
 
 2. **Map System**:
-   - Attach `MapSystem` component to a GameObject in your scene
-   - Set up map dimensions and colony parameters
-   - Place resource and building markers manually or via script
+   - Create an empty GameObject in your main scene called "MapManager"
+   - Attach `MapSystem` component to this GameObject  
+   - In the Inspector, configure map dimensions and colony parameters
+   - Set references to any UI markers or visual elements as needed
+   - Place resource and building markers manually in the scene or via script
 
 3. **Navigation System**:
-   - Attach `NavigationSystem` component to worker or agent GameObjects
-   - Configure navigation settings and obstacle layers
-   - Call `SetDestination()` method to move agents
+   - For each worker or agent GameObject that needs navigation:
+     - Create a Worker/Agent GameObject (e.g., "Worker1") 
+     - Attach `NavigationSystem` component to this GameObject
+     - Configure navigation settings like obstacle layers, movement speed
+     - Assign the destination Transform in Inspector when needed
+     - The NavigationSystem works with existing Worker AI components
 
 4. **Building System**:
-   - Attach `BuildingSystem` component to a GameObject in your scene
-   - Populate the building blueprints with construction requirements
-   - Configure costs, sizes, and requirements for each structure
+   - Create an empty GameObject in your main scene called "ConstructionManager"
+   - Attach `BuildingSystem` component to this GameObject
+   - In the Inspector, configure building blueprints and construction requirements
+   - Populate the cost requirements for each structure type
+   - The system will automatically manage resource consumption during building
 
 5. **Regolith Objects**:
-   - Create a 3D object (e.g., sphere) for your resource type
-   - Attach `RegolithObject` component to the object
-   - Configure resource properties in the Inspector
+   - Create a 3D object (e.g., sphere) in your scene for resources
+   - Name this GameObject "ResourceNode" or similar
+   - Attach `RegolithObject` component to the resource GameObject  
+   - Configure the resource type, amount available, and collection properties in Inspector
