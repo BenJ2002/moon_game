@@ -7,6 +7,7 @@ This directory contains the core environment-related systems for the Mars colony
 - **TerrainSystem.cs** - Manages the terrain generation and chunk system.
 - **MapSystem.cs** - Handles map visualization and marker placement.
 - **NavigationSystem.cs** - Controls agent movement and pathfinding.
+- **BuildingSystem.cs** - Manages construction and building structures.
 - **RegolithObject.cs** - Represents resource gathering objects in the environment.
 
 ## How to Add to Unity
@@ -20,6 +21,7 @@ This directory contains the core environment-related systems for the Mars colony
    - TerrainSystem.cs
    - MapSystem.cs
    - NavigationSystem.cs
+   - BuildingSystem.cs
    - RegolithObject.cs
 
 ### Setup Instructions
@@ -39,7 +41,12 @@ This directory contains the core environment-related systems for the Mars colony
    - Configure navigation settings and obstacle layers
    - Call `SetDestination()` method to move agents
 
-4. **Regolith Objects**:
+4. **Building System**:
+   - Attach `BuildingSystem` component to a GameObject in your scene
+   - Populate the building blueprints with construction requirements
+   - Configure costs, sizes, and requirements for each structure
+
+5. **Regolith Objects**:
    - Create a 3D object (e.g., sphere) for your resource type
    - Attach `RegolithObject` component to the object
    - Configure resource properties in the Inspector

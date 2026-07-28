@@ -1,31 +1,34 @@
-# Moon Game - Mars Colony Simulation
+# Moon Game - Complete Project Structure
 
-A Unity-based real-time strategy game set on Mars, centered around resource gathering and colony construction.
+This directory contains all the systems required for your Mars colony simulation game.
 
-## Project Structure
+## Project Directory Structure
 
 ```
 moon_game/
 ├── Assets/
 │   ├── Scripts/
+│   │   ├── Components/
+│   │   │   └── Objects/
+│   │   │       └── RegolithObject.cs
 │   │   ├── Systems/
-│   │   │   ├── Environment/
+│   │   │   ├── Environment/ 
 │   │   │   │   ├── TerrainSystem.cs
 │   │   │   │   ├── MapSystem.cs
 │   │   │   │   ├── NavigationSystem.cs
 │   │   │   │   ├── BuildingSystem.cs
-│   │   │   │   └── RegolithObject.cs
+│   │   │   │   └── README.md
 │   │   │   ├── UI/
-│   │   │   │   └── UISystem.cs
+│   │   │   │   ├── UISystem.cs
+│   │   │   │   └── README.md
 │   │   │   ├── Audio/
 │   │   │   │   └── AudioManager.cs
 │   │   │   ├── Camera/
 │   │   │   │   └── CameraController.cs
 │   │   │   ├── SettingsSystem.cs
-│   │   │   └── SaveSystem.cs
-│   │   └── Components/
-│   │       └── Objects/
-│   │           └── RegolithObject.cs
+│   │   │   ├── SaveSystem.cs  
+│   │   │   └── README.md
+│   │   └── Systems/README.md
 │   ├── Scenes/
 │   ├── Models/
 │   ├── Textures/
@@ -42,98 +45,55 @@ moon_game/
 └── README.md
 ```
 
-## Core Systems
+## Complete System Catalog
 
-### 1. Environment Systems
-- **TerrainSystem**: Manages terrain generation and resource distribution
-- **MapSystem**: Handles map visualization and marker placement
-- **NavigationSystem**: Controls agent movement and pathfinding
-- **BuildingSystem**: Manages construction and building structures  
-- **RegolithObject**: Represents collectible resources in the environment
+### 1. Core Game Systems
+- **GameManager.cs** - Main game state controller
+- **ResourceManager.cs** - Resource management system
+- **ConstructionManager.cs** - Building construction logic
+- **Infrastructure_Data.cs** - Structure definitions and data
 
-### 2. User Interface System  
-- **UISystem**: Main UI controller for game interface elements
+### 2. Worker AI Systems  
+- **Worker.cs** - Worker unit definition
+- **WorkerAI_Navigation.cs** - Worker movement and pathfinding
+- **WorkerAI_TaskManager.cs** - Task assignment and execution
+- **WorkerAIController.cs** - Central worker AI control
 
-### 3. Audio System
-- **AudioManager**: Manages sound effects, music, and audio settings
+### 3. Environment Systems (Assets/Scripts/Systems/Environment/)
+- **TerrainSystem.cs** - Terrain generation and management
+- **MapSystem.cs** - Map visualization and tracking  
+- **NavigationSystem.cs** - Navigation and movement logic
+- **BuildingSystem.cs** - Construction and building mechanics
 
-### 4. Camera System
-- **CameraController**: Controls camera movement and behavior
+### 4. User Interface Systems (Assets/Scripts/Systems/UI/)
+- **UISystem.cs** - Main UI controller and display management
 
-### 5. Settings System
-- **SettingsSystem**: Manages game preferences and configuration
+### 5. Audio Systems (Assets/Scripts/Systems/Audio/)
+- **AudioManager.cs** - Sound effects, music, and audio mixing
 
-### 6. Save System
-- **SaveSystem**: Handles saving and loading game state
+### 6. Camera Systems (Assets/Scripts/Systems/Camera/)
+- **CameraController.cs** - Camera movement and behavior  
 
-### 7. Worker AI Systems
-- **Worker**: Core worker class with health and carrying capacity
-- **WorkerAI_Navigation**: Handles movement to destinations
-- **WorkerAI_TaskManager**: Manages task assignment and completion
-- **WorkerAIController**: Controls overall AI behavior for workers
+### 7. Save/Load System (Assets/Scripts/Systems/)
+- **SaveSystem.cs** - Game state persistence system
 
-### 8. Resource Management
-- **ResourceManager**: Handles resource inventory and logic
-- **ConstructionManager**: Manages building structures and costs
+### 8. Settings System (Assets/Scripts/Systems/)
+- **SettingsSystem.cs** - Player settings and preferences
 
-## How to Setup in Unity
+### 9. Resource Objects (Assets/Scripts/Components/Objects/)
+- **RegolithObject.cs** - Represent collected resources in the world
 
-1. **Project Structure**
-   - Open the project in Unity
-   - Make sure all scripts are imported correctly
+## Documentation
 
-2. **Setup GameManager**
-   - Create a GameObject in your main scene
-   - Attach `GameManager` component to it
-   - Configure the game state variables
+Each directory contains a `README.md` file with:
+- Purpose and functionality
+- Setup instructions for Unity integration
+- Usage examples and best practices
 
-3. **Setup UI System**
-   - Add a Canvas to your scene
-   - Use the `UISystem` component to manage all UI elements
+## Integration Notes
 
-4. **Setup Environment Systems**
-   - Create an empty GameObject and attach `TerrainSystem`, `MapSystem`, `NavigationSystem`, and `BuildingSystem`
-   - Configure settings according to your needs
-
-5. **Worker Setup** 
-   - Create worker prefabs with `Worker`, `WorkerAI_Navigation`, `WorkerAI_TaskManager`, and `WorkerAIController` components
-   - Place them in the scene and configure their behavior in the Inspector
-
-6. **Camera Setup**
-   - Add a Camera to your scene
-   - Attach `CameraController` component to it
-   - Assign a target object for the camera to follow
-
-## Game Features
-
-- Mars colony simulation with resource gathering mechanics
-- Multi-era progression with unit and building unlocks
-- AI opposition and complex worker behavior
-- Advanced UI systems for colony management
-- Narrative-driven gameplay connected to variables 
-- Real-time strategy elements
-- Full save/load system with persistent game state
-- Audio system for immersive sound effects and music
-
-## Development Roadmap
-
-1. **Core Mechanics**: Resource gathering, worker AI, construction (DONE)
-2. **UI/UX**: Complete interface design with status panels (DONE)  
-3. **Narrative**: Develop story progression elements tied to game state (IN PROGRESS)
-4. **Visuals**: Enhance art style and visual effects
-5. **Multiplayer**: Add multiplayer cooperative and competitive modes
-6. **Advanced AI**: More sophisticated worker behaviors and decision making
-7. **Expanded Building System**: Research, upgrades, production chains
-
-## Contributing
-
-To contribute:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes 
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+All systems are designed to work seamlessly together through the GameManager which initializes and coordinates all components. The architecture allows for:
+- Modular component design
+- Easy extensibility
+- Clean separation of concerns
+- Full serialization support for save/load functionality
