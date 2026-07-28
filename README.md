@@ -13,10 +13,16 @@ moon_game/
 │   │   │   │   ├── TerrainSystem.cs
 │   │   │   │   ├── MapSystem.cs
 │   │   │   │   ├── NavigationSystem.cs
+│   │   │   │   ├── BuildingSystem.cs
 │   │   │   │   └── RegolithObject.cs
 │   │   │   ├── UI/
 │   │   │   │   └── UISystem.cs
-│   │   │   └── SettingsSystem.cs
+│   │   │   ├── Audio/
+│   │   │   │   └── AudioManager.cs
+│   │   │   ├── Camera/
+│   │   │   │   └── CameraController.cs
+│   │   │   ├── SettingsSystem.cs
+│   │   │   └── SaveSystem.cs
 │   │   └── Components/
 │   │       └── Objects/
 │   │           └── RegolithObject.cs
@@ -42,21 +48,31 @@ moon_game/
 - **TerrainSystem**: Manages terrain generation and resource distribution
 - **MapSystem**: Handles map visualization and marker placement
 - **NavigationSystem**: Controls agent movement and pathfinding
+- **BuildingSystem**: Manages construction and building structures  
 - **RegolithObject**: Represents collectible resources in the environment
 
 ### 2. User Interface System  
 - **UISystem**: Main UI controller for game interface elements
 
-### 3. Settings System
+### 3. Audio System
+- **AudioManager**: Manages sound effects, music, and audio settings
+
+### 4. Camera System
+- **CameraController**: Controls camera movement and behavior
+
+### 5. Settings System
 - **SettingsSystem**: Manages game preferences and configuration
 
-### 4. Worker AI Systems
+### 6. Save System
+- **SaveSystem**: Handles saving and loading game state
+
+### 7. Worker AI Systems
 - **Worker**: Core worker class with health and carrying capacity
 - **WorkerAI_Navigation**: Handles movement to destinations
 - **WorkerAI_TaskManager**: Manages task assignment and completion
 - **WorkerAIController**: Controls overall AI behavior for workers
 
-### 5. Resource Management
+### 8. Resource Management
 - **ResourceManager**: Handles resource inventory and logic
 - **ConstructionManager**: Manages building structures and costs
 
@@ -76,12 +92,17 @@ moon_game/
    - Use the `UISystem` component to manage all UI elements
 
 4. **Setup Environment Systems**
-   - Create an empty GameObject and attach `TerrainSystem`, `MapSystem`, and `NavigationSystem`
+   - Create an empty GameObject and attach `TerrainSystem`, `MapSystem`, `NavigationSystem`, and `BuildingSystem`
    - Configure settings according to your needs
 
 5. **Worker Setup** 
    - Create worker prefabs with `Worker`, `WorkerAI_Navigation`, `WorkerAI_TaskManager`, and `WorkerAIController` components
    - Place them in the scene and configure their behavior in the Inspector
+
+6. **Camera Setup**
+   - Add a Camera to your scene
+   - Attach `CameraController` component to it
+   - Assign a target object for the camera to follow
 
 ## Game Features
 
@@ -91,14 +112,18 @@ moon_game/
 - Advanced UI systems for colony management
 - Narrative-driven gameplay connected to variables 
 - Real-time strategy elements
+- Full save/load system with persistent game state
+- Audio system for immersive sound effects and music
 
 ## Development Roadmap
 
-1. **Core Mechanics**: Resource gathering, worker AI, construction
-2. **UI/UX**: Complete interface design with status panels
-3. **Narrative**: Develop story progression elements tied to game state
+1. **Core Mechanics**: Resource gathering, worker AI, construction (DONE)
+2. **UI/UX**: Complete interface design with status panels (DONE)  
+3. **Narrative**: Develop story progression elements tied to game state (IN PROGRESS)
 4. **Visuals**: Enhance art style and visual effects
 5. **Multiplayer**: Add multiplayer cooperative and competitive modes
+6. **Advanced AI**: More sophisticated worker behaviors and decision making
+7. **Expanded Building System**: Research, upgrades, production chains
 
 ## Contributing
 

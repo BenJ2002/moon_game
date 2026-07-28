@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     
     public ConstructionManager constructionManager;
     public ResourceManager resourceManager;
+    public BuildingSystem buildingSystem;
+    public SaveSystem saveSystem;
 
     void Start()
     {
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
         // Get references to managers if they exist in the scene
         constructionManager = FindObjectOfType<ConstructionManager>();
         resourceManager = FindObjectOfType<ResourceManager>();
+        buildingSystem = FindObjectOfType<BuildingSystem>();
+        saveSystem = FindObjectOfType<SaveSystem>();
         
         // If we don't have managers, create new ones or assign defaults
         if (constructionManager == null)
@@ -62,6 +66,16 @@ public class GameManager : MonoBehaviour
         if (resourceManager == null)
         {
             resourceManager = gameObject.AddComponent<ResourceManager>();
+        }
+        
+        if (buildingSystem == null)
+        {
+            buildingSystem = gameObject.AddComponent<BuildingSystem>();
+        }
+        
+        if (saveSystem == null)
+        {
+            saveSystem = gameObject.AddComponent<SaveSystem>();
         }
     }
 
@@ -115,6 +129,22 @@ public class GameManager : MonoBehaviour
         foreach (var log in storyLogs)
         {
             Debug.Log("[STORY LOG]: " + log);
+        }
+    }
+    
+    public void SaveGame()
+    {
+        if (saveSystem != null)
+        {
+            saveSystem.SaveGame();
+        }
+    }
+    
+    public void LoadGame()
+    {
+        if (saveSystem != null)
+        {
+            saveSystem.LoadGame();
         }
     }
 }
