@@ -32,7 +32,9 @@ public class WorkerAI_Navigation : MonoBehaviour
 
     private void PerformTask()
     {
-        Debug.Log($"Worker {worker.workerName} reached destination at {destination.position}. Performing task...");
+        // Use the correct property name from Worker class
+        string workerName = (worker != null) ? worker.workerName : "Worker";
+        Debug.Log($"Worker {workerName} reached destination at {destination.position}. Performing task...");
         
         // Placeholder for actual task logic
         // Could be gathering resources, building structures, etc.

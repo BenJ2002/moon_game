@@ -16,15 +16,15 @@ public class ConstructionManager : MonoBehaviour
         // Initialize default construction costs
         constructionCosts = new Dictionary<ResourceType, float>();
         constructionCosts[ResourceType.Regolith] = 10f;
-        constructionCosts[ResourceType.WaterIce] = 5f;
-        constructionCosts[ResourceType.MetalOre] = 15f;
-        constructionCosts[ResourceType.OrganicMatter] = 8f;
+        constructionCosts[ResourceType.Ice] = 5f;
+        constructionCosts[ResourceType.HeavyMetal] = 15f;
+        constructionCosts[ResourceType.Consumables] = 8f;
     }
     
     public bool CanAffordConstruction(string structureName) 
     {
         // Find the structure data
-        StructureData structure = availableStructures.Find(s => s.Name == structureName);
+        StructureData structure = availableStructures.Find(s => s.name == structureName);
         
         if (structure == null) 
         {
